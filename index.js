@@ -10,18 +10,19 @@ class Tree {
   constructor(root) {
     this.root = root;
   }
-}
-function buildTree(array) {
-  if (array.length === 0) {
-    return null;
-  }
-  let middle = parseInt((array.length - 1) / 2);
 
-  return new Node(
-    array[middle],
-    buildTree(array.slice(0, middle)),
-    buildTree(array.slice(middle + 1))
-  );
+  buildTree(array) {
+    if (array.length === 0) {
+      return null;
+    }
+    let middle = parseInt((array.length - 1) / 2);
+
+    return new Node(
+      array[middle],
+      buildTree(array.slice(0, middle)),
+      buildTree(array.slice(middle + 1))
+    );
+  }
 }
 
 function mergeSort(array) {
