@@ -19,9 +19,24 @@ class Tree {
 
     return new Node(
       array[middle],
-      buildTree(array.slice(0, middle)),
-      buildTree(array.slice(middle + 1))
+      this.buildTree(array.slice(0, middle)),
+      this.buildTree(array.slice(middle + 1))
     );
+  }
+
+  insert(value) {
+    const newNode = new Node(value);
+
+    let currentNode = this.root;
+    while (true) {
+      const direction = newNode.data > currentNode.data ? "right" : "left";
+
+      if (currentNode[direction] === null) {
+        currentNode[direction] = newNode;
+        break;
+      }
+      currentNode = currentNode[direction];
+    }
   }
 }
 
