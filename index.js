@@ -38,6 +38,36 @@ class Tree {
       currentNode = currentNode[direction];
     }
   }
+  delete(value) {
+    let currentNode = this.root;
+    while (true) {
+      const direction = value > currentNode.data ? "right" : "left";
+      if (currentNode[direction].data === value) {
+        console.log(currentNode[direction]);
+        let children = 0;
+        if (currentNode[direction].left) {
+          children = children + 1;
+        }
+        if (currentNode[direction].right) {
+          children = children + 1;
+        }
+
+        switch (children) {
+          case 0:
+            currentNode[direction] = null;
+            break;
+          case 1:
+            currentNode[direction] =
+              currentNode[direction].left || currentNode[direction].right;
+            console.log(currentNode[direction]);
+            break;
+        }
+        break;
+      }
+
+      currentNode = currentNode[direction];
+    }
+  }
 }
 
 function mergeSort(array) {
