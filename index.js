@@ -79,6 +79,21 @@ class Tree {
       currentNode = currentNode[direction];
     }
   }
+
+  levelOrder(callback) {
+    const queue = [];
+    queue.push(this.root);
+    while (queue.length != 0) {
+      const currentNode = queue.shift();
+      callback(currentNode);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+  }
 }
 
 function mergeSort(array) {
