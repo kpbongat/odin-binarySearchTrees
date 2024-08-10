@@ -81,6 +81,9 @@ class Tree {
   }
 
   levelOrder(callback) {
+    if (!callback) {
+      throw Error("Missing callback function!");
+    }
     const queue = [];
     queue.push(this.root);
     while (queue.length != 0) {
@@ -96,6 +99,9 @@ class Tree {
   }
 
   inOrder(callback, currentNode = this.root) {
+    if (!callback) {
+      throw Error("Missing callback function!");
+    }
     if (currentNode.left) {
       this.inOrder(callback, currentNode.left);
     }
@@ -106,6 +112,9 @@ class Tree {
   }
 
   preOrder(callback, currentNode = this.root) {
+    if (!callback) {
+      throw Error("Missing callback function!");
+    }
     callback(currentNode);
     if (currentNode.left) {
       this.inOrder(callback, currentNode.left);
@@ -116,6 +125,9 @@ class Tree {
   }
 
   postOrder(callback, currentNode = this.root) {
+    if (!callback) {
+      throw Error("Missing callback function!");
+    }
     if (currentNode.left) {
       this.inOrder(callback, currentNode.left);
     }
