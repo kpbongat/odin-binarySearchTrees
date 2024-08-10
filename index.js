@@ -68,6 +68,17 @@ class Tree {
       currentNode = currentNode[direction];
     }
   }
+  find(value) {
+    let currentNode = this.root;
+    while (true) {
+      const direction = value > currentNode.data ? "right" : "left";
+      if (currentNode[direction].data === value) {
+        return currentNode[direction];
+      }
+
+      currentNode = currentNode[direction];
+    }
+  }
 }
 
 function mergeSort(array) {
