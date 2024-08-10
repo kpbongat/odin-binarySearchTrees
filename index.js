@@ -94,6 +94,16 @@ class Tree {
       }
     }
   }
+
+  inOrder(callback, currentNode = this.root) {
+    if (currentNode.left) {
+      this.inOrder(callback, currentNode.left);
+    }
+    callback(currentNode);
+    if (currentNode.right) {
+      this.inOrder(callback, currentNode.right);
+    }
+  }
 }
 
 function mergeSort(array) {
