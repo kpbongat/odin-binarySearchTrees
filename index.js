@@ -114,6 +114,16 @@ class Tree {
       this.inOrder(callback, currentNode.right);
     }
   }
+
+  postOrder(callback, currentNode = this.root) {
+    if (currentNode.left) {
+      this.inOrder(callback, currentNode.left);
+    }
+    if (currentNode.right) {
+      this.inOrder(callback, currentNode.right);
+    }
+    callback(currentNode);
+  }
 }
 
 function mergeSort(array) {
