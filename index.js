@@ -183,6 +183,14 @@ class Tree {
     const balanced = Math.abs(leftHeight - rightHeight) <= 1 ? true : false;
     return balanced && leftBalanced && rightBalanced;
   }
+
+  rebalance(root) {
+    const newArray = [];
+    this.inOrder((i) => {
+      newArray.push(i.data);
+    }, root);
+    this.root = this.buildTree(newArray);
+  }
 }
 
 function mergeSort(array) {
