@@ -165,6 +165,24 @@ class Tree {
       height = height + 1;
     }
   }
+
+  isBalanced(currentNode = this.root) {
+    let leftHeight = 0;
+    let leftBalanced = true;
+    let rightHeight = 0;
+    let rightBalanced = true;
+    if (currentNode.left) {
+      leftHeight = this.height(currentNode.left);
+      leftBalanced = this.isBalanced(currentNode.left);
+    }
+    if (currentNode.right) {
+      rightHeight = this.height(currentNode.right);
+      rightBalanced = this.isBalanced(currentNode.right);
+    }
+
+    const balanced = Math.abs(leftHeight - rightHeight) <= 1 ? true : false;
+    return balanced && leftBalanced && rightBalanced;
+  }
 }
 
 function mergeSort(array) {
