@@ -136,6 +136,21 @@ class Tree {
     }
     callback(currentNode);
   }
+
+  height(node, height = 0) {
+    let leftHeight = 0;
+    let rightHeight = 0;
+    if (node.left) {
+      leftHeight = this.height(node.left, height + 1);
+    }
+    if (node.right) {
+      rightHeight = this.height(node.right, height + 1);
+    }
+    if (!node.left && !node.right) {
+      return height;
+    }
+    return leftHeight > rightHeight ? leftHeight : rightHeight;
+  }
 }
 
 function mergeSort(array) {
