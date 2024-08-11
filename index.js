@@ -151,6 +151,20 @@ class Tree {
     }
     return leftHeight > rightHeight ? leftHeight : rightHeight;
   }
+
+  depth(node) {
+    let height = 0;
+    let currentNode = this.root;
+    while (true) {
+      const direction = node.data > currentNode.data ? "right" : "left";
+      if (currentNode[direction].data === node.data) {
+        return height + 1;
+      }
+
+      currentNode = currentNode[direction];
+      height = height + 1;
+    }
+  }
 }
 
 function mergeSort(array) {
